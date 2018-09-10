@@ -1,8 +1,7 @@
 #ifndef NGLDRAW_H_
 #define NGLDRAW_H_
-
-#include <ngl/Camera.h>
-#include <ngl/Light.h>
+#include <ngl/Mat4.h>
+#include <ngl/Vec3.h>
 #include <SDL.h>
 
 class NGLDraw

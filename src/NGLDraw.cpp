@@ -1,7 +1,6 @@
 #include "NGLDraw.h"
 #include <ngl/ShaderLib.h>
 #include <ngl/NGLInit.h>
-#include <ngl/Material.h>
 #include <ngl/Transformation.h>
 const static float INCREMENT=0.01f;
 const static float ZOOM=0.05f;
@@ -43,8 +42,8 @@ void NGLDraw::mouseMoveEvent (const SDL_MouseMotionEvent &_event)
   {
     int diffx=_event.x-m_origX;
     int diffy=_event.y-m_origY;
-    m_spinXFace += (float) 0.5f * diffy;
-    m_spinYFace += (float) 0.5f * diffx;
+    m_spinXFace += 0.5f * diffy;
+    m_spinYFace += 0.5f * diffx;
     m_origX = _event.x;
     m_origY = _event.y;
     draw();
@@ -53,8 +52,8 @@ void NGLDraw::mouseMoveEvent (const SDL_MouseMotionEvent &_event)
   // right mouse translate code
   else if(m_translate && _event.state &SDL_BUTTON_RMASK)
   {
-    int diffX = (int)(_event.x - m_origXPos);
-    int diffY = (int)(_event.y - m_origYPos);
+    int diffX = static_cast<int>(_event.x - m_origXPos);
+    int diffY = static_cast<int>(_event.y - m_origYPos);
     m_origXPos=_event.x;
     m_origYPos=_event.y;
     m_modelPos.m_x += INCREMENT * diffX;
